@@ -57,6 +57,8 @@ alert("Hai vinto");
 alert("il tuo punteggio è" + punteggio);
 }
 
+}
+
 
 
 
