@@ -12,7 +12,7 @@
 
 // variabili--------------------------------------//
 var arrayBombe = [];
-var tentativiMassimi = 5;
+var tentativiMassimi = 100 - 16;
 var tentativi = [];
 var punteggio = 0;
 
@@ -51,13 +51,14 @@ if (controlloBombeTentativi == true) {
   tentativi.push(numeroUtente);
   punteggio++;
 }
+}
 
 if (controlloBombeTentativi == false) {
 alert("Hai vinto");
-alert("il tuo punteggio è" + punteggio);
+alert("il tuo punteggio è " + punteggio);
 }
 
-}
+
 
 
 
