@@ -9,42 +9,46 @@
 
 // Il computer deve generare 16 numeri casuali tra 1 e 100.
 
+
+// variabili--------------------------------------//
 var arrayBombe = [];
+var tentativiMassimi = 100 - 16;
+var tentativi = [];
+var punteggio = 0;
 
-for (var i = 0; i < 16; i++) {
-  arrayBombe.push(numeriRandom(1, 100));
-
+// utilizzo un ciclo while per generare il numero delle bombe e controllare che non si ripetano
+var i = 0;
+while (arrayBombe.length < 16) {
+  var numeroBombe = numeriRandom(1, 100);
+  console.log("iterazione numero", arrayBombe.length, "=", numeroBombe);
+  var controllo = controlloArray(arrayBombe, numeroBombe);
+  if (controllo == false) {
+    arrayBombe.push(numeroBombe);
+  }
 }
 console.log(arrayBombe);
 
 
+// gioco-------------------------------------------//
 // In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 
-var arrayNumeriUtente = [];
-
-for (var i = 0; i < 4; i++) {
-  var mossaUtente = parseInt(prompt("Inserisci un numero da 1 a 100"))
-  arrayNumeriUtente.push(mossaUtente);
-
-}
-
-console.log(arrayNumeriUtente);
 
 
 
 
+// funzioni -----------------------------------------//
 
-// funzioni -----------------------------------------
+function controlloArray (array, element) {
+  var found = false;
 
-function controlloArray (array, number) {
-  var result = false;
   for (var i = 0; i < array.length; i++) {
-    if (number == array[i]) {
-      return result = true;
+    if (element == array[i]) {
+      found = true;
     }
   }
-  return result;
+  return found;
 }
+
 
 function numeriRandom (min, max) {
   return Math.floor(Math.random() * (max - min +1) + min);
