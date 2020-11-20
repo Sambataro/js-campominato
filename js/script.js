@@ -12,14 +12,33 @@
 
 // variabili--------------------------------------//
 var arrayBombe = [];
-var tentativiMassimi = 5;
+var tentativiMassimi = 100 - 16;
 var tentativi = [];
 var punteggio = 0;
-
+var maxLivello = 0;
+var modalitaGioco = prompt("Scegli modalita gioco\r" + "facile\r" + "normale\r" + "difficle\r");
+console.log(modalitaGioco);
+// BONUS: (da fare solo se funziona tutto il resto)
+// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 =>  tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+    switch (modalitaGioco) {
+      case "facile":
+        maxLivello = 100;
+        break;
+      case "normale":
+        maxLivello = 80;
+        break;
+      case "difficile":
+        maxLivello = 50;
+        break;
+    }
+    console.log(modalitaGioco);
 // utilizzo un ciclo while per generare il numero delle bombe e controllare che non si ripetano
 var i = 0;
 while (arrayBombe.length < 16) {
-  var numeroBombe = numeriRandom(1, 100);
+  var numeroBombe = numeriRandom(1, maxLivello);
   console.log("iterazione numero", arrayBombe.length, "=", numeroBombe);
   var controllo = controlloArray(arrayBombe, numeroBombe);
   if (controllo == false) {
@@ -69,7 +88,6 @@ alert("il tuo punteggio è " + punteggio);
 
 function controlloArray (array, elemento) {
   var found = false;
-
   for (var i = 0; i < array.length; i++) {
     if (elemento == array[i]) {
       found = true;
