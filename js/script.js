@@ -12,7 +12,7 @@
 
 // variabili--------------------------------------//
 var arrayBombe = [];
-var tentativiMassimi = 100 - 16;
+var tentativiMassimi = 5;
 var tentativi = [];
 var punteggio = 0;
 
@@ -73,6 +73,9 @@ function controlloArray (array, elemento) {
   for (var i = 0; i < array.length; i++) {
     if (elemento == array[i]) {
       found = true;
+      alert("inserisci un numero diverso");
+    } else if (elemento = isNaN(elemento)){
+      alert("inserisci un numero, non una parola")
     }
   }
   return found;
