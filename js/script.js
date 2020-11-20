@@ -12,7 +12,7 @@
 
 // variabili--------------------------------------//
 var arrayBombe = [];
-var tentativiMassimi = 100 - 16;
+var tentativiMassimi = 5;
 var tentativi = [];
 var punteggio = 0;
 
@@ -30,7 +30,33 @@ console.log(arrayBombe);
 
 
 // gioco-------------------------------------------//
+
 // In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+var haiPerso = false;
+while (tentativi.length < tentativiMassimi && haiPerso == false) {
+  var numeroUtente = parseInt(prompt("inserisci un numero da 1 a 100"));
+  console.log(numeroUtente);
+  // L’utente non può inserire più volte lo stesso numero.
+  var controlloTentativi = controlloArray(tentativi, numeroUtente);
+  console.log(controlloTentativi);
+  // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
+  var controlloBombeTentativi = controlloArray(arrayBombe, numeroUtente);
+  console.log(controlloBombeTentativi);
+
+if (controlloBombeTentativi == true) {
+  alert("BOOM hai perso!");
+  alert("il tuo punteggio è " + punteggio);
+  haiPerso = true;
+} else if (controlloTentativi == false){
+  tentativi.push(numeroUtente);
+  punteggio++;
+}
+
+if (controlloBombeTentativi == false) {
+alert("Hai vinto");
+alert("il tuo punteggio è" + punteggio);
+}
+
 
 
 
@@ -38,11 +64,11 @@ console.log(arrayBombe);
 
 // funzioni -----------------------------------------//
 
-function controlloArray (array, element) {
+function controlloArray (array, elemento) {
   var found = false;
 
   for (var i = 0; i < array.length; i++) {
-    if (element == array[i]) {
+    if (elemento == array[i]) {
       found = true;
     }
   }
